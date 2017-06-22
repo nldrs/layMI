@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>LayIM</title>
+    <link rel="stylesheet" href="layui/css/layui.css">
+    <style>
+        html{background-color: #333;}
+    </style>
+</head>
+<body>
+<script src="layui/layui.js"></script>
+<script>
+    layui.use('layim', function(layim){
+        //基础配置
+        layim.config({
+            init: {
+                url: 'json/getList.json', //接口地址（返回的数据格式见下文）
+                type: 'get', //默认get，一般可不填
+                data: {} //额外参数
+            },
+            members: {
+                url: 'json/getMembers.json',
+                data: {}
+            },
+            uploadImage: {
+                url: '/upload/image'
+             },
+            uploadFile: {
+                url: '/upload/file'
+            },
+            //扩展工具栏
+            tool: [{
+                alias: 'code',
+                title: '代码',
+                icon: '&#xe64e;'
+            }],
+             brief: false, //是否简约模式（如果true则不显示主面板）
+            title:"加油小李",
+            isAudio:true,
+            isVideo: true, //开启聊天工具栏视频
+            initSkin: '5.jpg',
+            notice: true,
+            msgbox: "tpl/1.html",//消息盒子页面地址，若不开启，剔除该项即可
+            find:  "tpl/2.html", //发现页面地址，若不开启，剔除该项即可
+            chatLog:"tpl/3.html", //聊天记录页面地址，若不开启，剔除该项即可
+        })
+    });
+</script>
+</body>
+</html>
